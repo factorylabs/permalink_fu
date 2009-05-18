@@ -17,6 +17,7 @@ module PermalinkFu
       result.gsub!(/[^\w_ \-]+/i,   '') # Remove unwanted chars.
       result.gsub!(/[ \-]+/i,      '-') # No more than one of the separator in a row.
       result.gsub!(/^\-|\-$/i,      '') # Remove leading/trailing separator.
+      result.gsub!(/\./,            '') # Remove dots since they mess up rails routing
       result.downcase!
       result.size.zero? ? random_permalink(string) : result
     rescue
